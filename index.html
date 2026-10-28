@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Civilian Pay Scale</title>
+<style>
+:root{--navy:#11263d;--blue:#245a84;--gold:#d6a83a;--cream:#f6f3ea;--white:#fff;--ink:#17212b;--muted:#5d6974;--border:#d8dee5;--green:#1d6b4f}
+*{box-sizing:border-box} body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:linear-gradient(145deg,#eef3f7 0%,#f9f7f1 100%);color:var(--ink);min-height:100vh}
+header{background:var(--navy);color:#fff;border-bottom:5px solid var(--gold);padding:24px 20px} .head{max-width:980px;margin:auto;display:flex;align-items:center;gap:16px}.mark{width:54px;height:54px;border:2px solid var(--gold);border-radius:12px;display:grid;place-items:center;font-weight:800;color:var(--gold);font-size:22px}.head h1{margin:0;font-size:clamp(1.7rem,4vw,2.5rem)}.head p{margin:5px 0 0;color:#dbe7f0}
+main{max-width:980px;margin:42px auto;padding:0 20px}.card{background:#fff;border:1px solid var(--border);border-radius:18px;box-shadow:0 16px 40px rgba(17,38,61,.12);overflow:hidden}.card-top{padding:26px 28px 18px;border-bottom:1px solid var(--border)}.card-top h2{margin:0 0 8px;font-size:1.35rem}.card-top p{margin:0;color:var(--muted);line-height:1.5}.form{display:grid;grid-template-columns:1fr 1fr auto;gap:18px;align-items:end;padding:28px}label{display:block;font-weight:700;margin-bottom:8px}select,button{width:100%;height:50px;border-radius:9px;font:inherit}select{border:1px solid #aeb9c3;background:#fff;padding:0 14px;color:var(--ink)}select:focus,button:focus{outline:3px solid rgba(36,90,132,.25);outline-offset:2px}button{border:0;background:var(--blue);color:#fff;font-weight:700;padding:0 24px;cursor:pointer;min-width:155px}button:hover{background:#173f60}.result{margin:0 28px 28px;padding:28px;border-radius:14px;background:var(--navy);color:#fff;display:none}.result.show{display:block}.result small{display:block;color:#c6d6e2;text-transform:uppercase;letter-spacing:.08em;font-weight:700}.salary{font-size:clamp(2.3rem,7vw,4rem);font-weight:800;line-height:1.1;margin:7px 0}.selection{color:#f0d58d;font-weight:700}.cap{display:none;margin-top:12px;color:#e8edf2;font-size:.94rem}.details{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:0 28px 28px}.detail{background:var(--cream);border-radius:10px;padding:16px}.detail b{display:block;margin-bottom:5px}.detail span{color:var(--muted)}footer{max-width:980px;margin:0 auto 35px;padding:0 20px;color:var(--muted);font-size:.88rem;line-height:1.5}footer a{color:var(--blue)}
+@media(max-width:700px){.form{grid-template-columns:1fr}.details{grid-template-columns:1fr}.head{align-items:flex-start}.mark{flex:0 0 48px;width:48px;height:48px}.card-top,.form{padding-left:20px;padding-right:20px}.result{margin-left:20px;margin-right:20px}.details{padding-left:20px;padding-right:20px}}
+@media print{body{background:#fff}header{background:#fff;color:#000;border-bottom:2px solid #000}.head p{color:#333}.mark{color:#000;border-color:#000}.card{box-shadow:none}.form,button{display:none}.result{display:block!important;background:#fff;color:#000;border:2px solid #000}.result small,.cap{color:#333}.selection{color:#000}footer{color:#333}}
+</style>
+</head>
+<body>
+<header><div class="head"><div class="mark" aria-hidden="true">$</div><div><h1>Civilian Pay Scale</h1><p>2026 Washington-Baltimore-Arlington Locality Pay Area</p></div></div></header>
+<main>
+<section class="card" aria-labelledby="lookup-heading">
+<div class="card-top"><h2 id="lookup-heading">Salary Lookup</h2><p>Select a General Schedule grade and step to view the corresponding annual salary.</p></div>
+<form class="form" id="payForm">
+<div><label for="grade">Pay Grade</label><select id="grade" required><option value="">Select grade</option></select></div>
+<div><label for="step">Pay Step</label><select id="step" required><option value="">Select step</option></select></div>
+<div><button type="submit">View Salary</button></div>
+</form>
+<div class="result" id="result" role="status" aria-live="polite"><small>Annual Salary</small><div class="salary" id="salary">$0</div><div class="selection" id="selection"></div><div class="cap" id="cap">* Rate limited to the rate for level IV of the Executive Schedule (5 U.S.C. 5304(g)(1)).</div></div>
+<div class="details"><div class="detail"><b>Effective Date</b><span>January 2026</span></div><div class="detail"><b>Locality Payment</b><span>33.94%</span></div><div class="detail"><b>Total Increase</b><span>1%</span></div></div>
+</section>
+</main>
+<footer><strong>Source:</strong> Salary Table 2026-DCB. Annual rates by grade and step for the Washington-Baltimore-Arlington locality pay area. Applicable locations are listed on the <a href="https://www.opm.gov/policy-data-oversight/pay-leave/salaries-wages/2026/locality-pay-area-definitions/" target="_blank" rel="noopener">2026 Locality Pay Area Definitions page</a>.</footer>
+<script>
+const payData = {"1":[30249,31263,32269,33271,34274,34862,35857,36859,36900,37835],"2":[34011,34820,35948,36900,37313,38410,39507,40604,41701,42798],"3":[37112,38350,39587,40825,42063,43300,44538,45775,47013,48251],"4":[41659,43048,44437,45826,47215,48604,49993,51382,52771,54160],"5":[46610,48163,49717,51271,52825,54378,55932,57486,59039,60593],"6":[51957,53689,55420,57152,58884,60616,62348,64080,65811,67543],"7":[57736,59661,61586,63510,65435,67360,69284,71209,73134,75059],"8":[63940,66071,68202,70333,72464,74595,76726,78857,80988,83119],"9":[70623,72977,75332,77687,80041,82396,84751,87105,89460,91815],"10":[77771,80363,82954,85546,88138,90730,93321,95913,98505,101097],"11":[85447,88296,91145,93994,96843,99692,102540,105389,108238,111087],"12":[102415,105829,109243,112657,116071,119485,122899,126313,129728,133142],"13":[121785,125845,129904,133964,138024,142084,146143,150203,154263,158322],"14":[143913,148711,153509,158306,163104,167902,172700,177497,182295,187093],"15":[169279,174922,180565,186207,191850,197200,197200,197200,197200,197200]};
+const grade = document.getElementById('grade');
+const step = document.getElementById('step');
+for (let g=1; g<=15; g++) grade.add(new Option(`GS-${g}`, g));
+for (let s=1; s<=10; s++) step.add(new Option(`Step ${s}`, s));
+document.getElementById('payForm').addEventListener('submit', e=>{e.preventDefault();const g=grade.value,s=step.value;if(!g||!s)return;const amount=payData[g][Number(s)-1];document.getElementById('salary').textContent=new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(amount);document.getElementById('selection').textContent=`GS-${g}, Step ${s}`;document.getElementById('cap').style.display=(g==='15'&&Number(s)>=6)?'block':'none';document.getElementById('result').classList.add('show');});
+</script>
+</body>
+</html>
